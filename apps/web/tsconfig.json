@@ -1,3 +1,4 @@
 {
-  "extends": "tsconfig/remix.json"
+  "extends": "tsconfig/remix.json",
+  "include": ["remix.env.d.ts", "**/*.ts", "**/*.tsx"]
 }

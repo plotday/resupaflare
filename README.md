@@ -17,3 +17,10 @@
 ## Local dev
 
 `pnpm dev`
+
+## TODO
+
+[] Mantine
+[] Supabase
+[] Cloudflare Function
+[] lint with githook
