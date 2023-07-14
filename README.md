@@ -18,6 +18,16 @@
 
 `pnpm dev`
 
+## Patching
+
+Remix is patched to fix the sourcemap path escaping for Cloudflare functions.
+
+To update the patch for a new Remix version:
+
+1. `pnpm patch @remix-run/dev@[VERSION]`
+1. Edit `[TMP_PATH]/dist/compiler/server/write.js` (see the previous diff for the change).
+1. `pnpm patch-commit [TMP_PATH]`
+
 ## TODO
 
 [] Mantine
