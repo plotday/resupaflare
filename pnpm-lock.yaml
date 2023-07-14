@@ -6,7 +6,7 @@ settings:
 
 patchedDependencies:
   '@remix-run/dev@1.18.1':
-    hash: xvxx43zet3kueaicb3zusvcl6e
+    hash: cjztwn7m6sjvuerhnab6gexrzq
     path: patches/@remix-run__dev@1.18.1.patch
 
 importers:
@@ -64,7 +64,7 @@ importers:
         version: link:../../packages/tsconfig
       '@remix-run/dev':
         specifier: ^1.18.1
-        version: 1.18.1(patch_hash=xvxx43zet3kueaicb3zusvcl6e)(@types/node@20.4.2)
+        version: 1.18.1(patch_hash=cjztwn7m6sjvuerhnab6gexrzq)(@types/node@20.4.2)
       '@types/node':
         specifier: ^20.4.2
         version: 20.4.2
@@ -2319,7 +2319,7 @@ packages:
     engines: {node: '>=14.0.0'}
     dev: false
 
-  /@remix-run/dev@1.18.1(patch_hash=xvxx43zet3kueaicb3zusvcl6e)(@types/node@20.4.2):
+  /@remix-run/dev@1.18.1(patch_hash=cjztwn7m6sjvuerhnab6gexrzq)(@types/node@20.4.2):
     resolution: {integrity: sha512-uT+YRGiR17p51y284MvEZMpkFkIykJ0uTVP3hepW0fvtoD+dt09DFVk1AQkJhEKlIVECkyR9lrOtceP/2qML6w==}
     engines: {node: '>=14.0.0'}
     hasBin: true

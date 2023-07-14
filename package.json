@@ -4,7 +4,7 @@
     "build": "turbo run build",
     "build:web": "turbo run build --filter=@plot/web && ln -sfn apps/web/functions functions",
     "dev": "turbo run dev",
-    "lint": "turbo run lint",
+    "lint": "pnpm install --frozen-lockfile && turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
@@ -15,7 +15,7 @@
     "prettier": "^2.5.1",
     "turbo": "latest"
   },
-  "packageManager": "pnpm@7.15.0",
+  "packageManager": "pnpm@8.6.6",
   "name": "plot",
   "pnpm": {
     "patchedDependencies": {
