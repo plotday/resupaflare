@@ -6,6 +6,7 @@
     "build:web": "turbo run build --filter=@resupaflare/web && ln -sfn apps/web/functions functions",
     "dev": "turbo run dev",
     "lint": "pnpm install --frozen-lockfile && turbo run lint",
+    "test": "turbo run test",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
@@ -14,7 +15,8 @@
     "@turbo/gen": "^1.9.7",
     "eslint": "^8.38.0",
     "prettier": "^2.5.1",
-    "turbo": "latest"
+    "turbo": "latest",
+    "vitest": "^0.33.0"
   },
   "packageManager": "pnpm@8.6.6",
   "name": "plot",
