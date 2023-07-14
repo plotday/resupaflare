@@ -7,7 +7,7 @@
     "build": "remix build",
     "dev": "remix dev --no-restart -c \"npm run start\"",
     "start": "wrangler pages dev --compatibility-date=2023-06-21 ./public",
-    "lint": "tsc"
+    "lint": "tsc && eslint ."
   },
   "dependencies": {
     "@remix-run/cloudflare": "^1.18.1",
@@ -21,12 +21,10 @@
   "devDependencies": {
     "@cloudflare/workers-types": "^3.19.0",
     "@remix-run/dev": "^1.18.1",
-    "@remix-run/eslint-config": "^1.18.1",
     "@types/node": "^20.4.2",
     "@types/react": "^18.0.35",
     "@types/react-dom": "^18.0.11",
-    "eslint": "^8.38.0",
-    "tsconfig": "workspace:*",
+    "@plot/tsconfig": "workspace:*",
     "typescript": "^5.0.4",
     "wrangler": "^3.1.1"
   },
