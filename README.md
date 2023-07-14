@@ -50,8 +50,8 @@ To update the patch for a new Remix version:
 
 ## TODO
 
-- [] Mantine
-- [] Supabase
-- [] Cloudflare Worker
-- [] tests
-- [] Sentry
+- [ ] Mantine
+- [ ] Supabase
+- [ ] Cloudflare Worker
+- [ ] tests
+- [ ] Sentry
