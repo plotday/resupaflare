@@ -34,3 +34,5 @@ To update the patch for a new Remix version:
 [] Supabase
 [] Cloudflare Function
 [] lint with githook
+[] tests
+[] Sentry
