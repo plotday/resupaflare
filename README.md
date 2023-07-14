@@ -1,4 +1,15 @@
-# Remix + Cloudflare + Supabase starter
+# Remix + Supabase + Cloudflare starter
+
+A highly opinionated full-stack starter monorepo.
+
+- Package management: [pnpm](https://pnpm.io/)
+- Build system: [Turborepo](https://turbo.build/)
+- CI/CD: [GitHub Actions](https://github.com/features/actions)
+- Language: [Typescript](https://www.typescriptlang.org/)
+- Web: [Remix](https://remix.run/)
+- DB: [Supabase](https://supabase.com/)
+- Hosting: [Cloudflare Pages](https://pages.cloudflare.com/)
+- Server runtime: [Cloudflare Workers](https://workers.cloudflare.com/)
 
 ## Local setup
 
@@ -30,9 +41,8 @@ To update the patch for a new Remix version:
 
 ## TODO
 
-[] Mantine
-[] Supabase
-[] Cloudflare Function
-[] lint with githook
-[] tests
-[] Sentry
+- [] Mantine
+- [] Supabase
+- [] Cloudflare Worker
+- [] tests
+- [] Sentry
