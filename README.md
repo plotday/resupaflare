@@ -11,6 +11,15 @@ A highly opinionated full-stack starter monorepo.
 - Hosting: [Cloudflare Pages](https://pages.cloudflare.com/)
 - Server runtime: [Cloudflare Workers](https://workers.cloudflare.com/)
 
+## After forking
+
+You'll want to rename the `@resupaflare` scope to something matching your
+project:
+
+```bash
+git grep -l '@resupaflare' | xargs sed -i '' -e 's/@resupaflare/@NEW_SCOPE/g'
+```
+
 ## Local setup
 
 1. [Install pnpm](https://pnpm.io/installation)

@@ -1,5 +1,5 @@
 {
-  "name": "@plot/eslint-config-custom",
+  "name": "@resupaflare/eslint-config-custom",
   "version": "0.0.0",
   "main": "index.js",
   "license": "MIT",

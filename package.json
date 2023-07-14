@@ -1,14 +1,15 @@
 {
   "private": true,
+  "license": "MIT",
   "scripts": {
     "build": "turbo run build",
-    "build:web": "turbo run build --filter=@plot/web && ln -sfn apps/web/functions functions",
+    "build:web": "turbo run build --filter=@resupaflare/web && ln -sfn apps/web/functions functions",
     "dev": "turbo run dev",
     "lint": "pnpm install --frozen-lockfile && turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "@plot/eslint-config-custom": "workspace:*",
+    "@resupaflare/eslint-config-custom": "workspace:*",
     "@trivago/prettier-plugin-sort-imports": "^4.1.1",
     "@turbo/gen": "^1.9.7",
     "eslint": "^8.38.0",

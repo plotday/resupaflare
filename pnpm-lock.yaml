@@ -13,7 +13,7 @@ importers:
 
   .:
     devDependencies:
-      '@plot/eslint-config-custom':
+      '@resupaflare/eslint-config-custom':
         specifier: workspace:*
         version: link:packages/eslint-config-custom
       '@trivago/prettier-plugin-sort-imports':
@@ -59,12 +59,12 @@ importers:
       '@cloudflare/workers-types':
         specifier: ^3.19.0
         version: 3.19.0
-      '@plot/tsconfig':
-        specifier: workspace:*
-        version: link:../../packages/tsconfig
       '@remix-run/dev':
         specifier: ^1.18.1
         version: 1.18.1(patch_hash=cjztwn7m6sjvuerhnab6gexrzq)(@types/node@20.4.2)
+      '@resupaflare/tsconfig':
+        specifier: workspace:*
+        version: link:../../packages/tsconfig
       '@types/node':
         specifier: ^20.4.2
         version: 20.4.2

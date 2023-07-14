@@ -1,4 +1,4 @@
 {
-  "extends": "@plot/tsconfig/remix.json",
+  "extends": "@resupaflare/tsconfig/remix.json",
   "include": ["remix.env.d.ts", "**/*.ts", "**/*.tsx"]
 }
