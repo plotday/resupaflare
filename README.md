@@ -27,15 +27,7 @@ git grep -l '@resupaflare' | xargs sed -i '' -e 's/@resupaflare/@NEW_SCOPE/g'
 1. `pnpm install`
 1. Create `.env.development.local` and add the required variables from
    `.env.development`
-
-## Hosting setup
-
-### Cloudflare
-
-1. Create a new Pages application with the following settings:
-   1. Build command: `pnpm run build:web`
-   1. Build output directory: `/apps/web/public`
-   1. Root directory: `/`
+1. `pnpm dlx supabase link --project-ref PROJECT_ID`
 
 ## Local dev
 
@@ -46,7 +38,7 @@ git grep -l '@resupaflare' | xargs sed -i '' -e 's/@resupaflare/@NEW_SCOPE/g'
 After making local changes to the DB, run `pnpm gen-types`. This generates
 `packages/db/src/types.ts`, which should be checked in with the changes.
 
-## Patching
+## Updating Remix
 
 Remix is patched to fix the sourcemap path escaping for Cloudflare functions.
 
@@ -55,3 +47,23 @@ To update the patch for a new Remix version:
 1. `pnpm patch @remix-run/dev@[VERSION]`
 1. Edit `[TMP_PATH]/dist/compiler/server/write.js` (see the previous diff for the change).
 1. `pnpm patch-commit [TMP_PATH]`
+
+## Hosting setup
+
+### Cloudflare
+
+1. Create a new Pages application with the following settings:
+   1. Build command: `pnpm run build:web`
+   1. Build output directory: `/apps/web/public`
+   1. Root directory: `/`
+
+### Supabase
+
+Create two projects, one for production and the other for staging.
+
+### GitHub Actions
+
+1. Add `SUPABASE_PROJECT_ID` as a GitHub Actions environment variable
+1. [Generate a Supabase access token](https://supabase.com/dashboard/account/tokens)
+1. Add `SUPABASE_ACCESS_TOKEN` as a GitHub Actions repo secret
+1. Add `SUPABASE_DB_PASSWORD` as a GitHub Actions environment secret
