@@ -11,6 +11,8 @@
     "lint": "tsc && eslint ."
   },
   "dependencies": {
+    "@mantine/core": "7.0.0-alpha.17",
+    "@mantine/hooks": "7.0.0-alpha.17",
     "@remix-run/cloudflare": "^1.18.1",
     "@remix-run/cloudflare-pages": "^1.18.1",
     "@remix-run/css-bundle": "^1.18.1",
@@ -22,10 +24,13 @@
   "devDependencies": {
     "@cloudflare/workers-types": "^3.19.0",
     "@remix-run/dev": "^1.18.1",
+    "@resupaflare/tsconfig": "workspace:*",
     "@types/node": "^20.4.2",
     "@types/react": "^18.0.35",
     "@types/react-dom": "^18.0.11",
-    "@resupaflare/tsconfig": "workspace:*",
+    "postcss": "^8.4.26",
+    "postcss-preset-mantine": "^1.7.0",
+    "postcss-simple-vars": "^7.0.1",
     "typescript": "^5.0.4",
     "wrangler": "^3.1.1"
   },
