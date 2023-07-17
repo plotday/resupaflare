@@ -1,5 +1,6 @@
 import { Alert, Container, Paper, Stack, Text } from "@mantine/core";
-import { LoaderArgs, redirect } from "@remix-run/cloudflare";
+import type { LoaderArgs } from "@remix-run/cloudflare";
+import { redirect } from "@remix-run/cloudflare";
 import { useLocation, useOutletContext } from "@remix-run/react";
 import { IconAlertCircle } from "@tabler/icons-react";
 import {
@@ -10,7 +11,7 @@ import {
 import { signInWithAzure, signInWithGoogle } from "../auth";
 import { DEFAULT_PATH } from "../config";
 import { createServerClient, getSupabaseEnv } from "../db";
-import { SupabaseOutletContext } from "../root";
+import type { SupabaseOutletContext } from "../root";
 
 export const loader = async ({ context, request }: LoaderArgs) => {
   const { supabase } = createServerClient(getSupabaseEnv(context), request);

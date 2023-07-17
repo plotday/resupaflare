@@ -26,8 +26,9 @@ import {
   useRouteError,
 } from "@remix-run/react";
 import type { Database } from "@resupaflare/db";
-import { User, createBrowserClient } from "@supabase/auth-helpers-remix";
-import { SupabaseClient } from "@supabase/supabase-js";
+import type { User } from "@supabase/auth-helpers-remix";
+import { createBrowserClient } from "@supabase/auth-helpers-remix";
+import type { SupabaseClient } from "@supabase/supabase-js";
 import { useEffect, useMemo } from "react";
 
 import { APP_NAME } from "./config";
@@ -170,7 +171,7 @@ export default function App() {
     return () => {
       subscription.unsubscribe();
     };
-  }, [session?.access_token, supabase]);
+  }, [session?.access_token, supabase, revalidate]);
 
   const context = useMemo(() => ({ supabase, user }), [supabase, user]);
 
