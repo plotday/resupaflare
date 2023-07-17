@@ -23,6 +23,14 @@
     },
     "@resupaflare/db#gen-types": {
       "dependsOn": ["@resupaflare/db#start"]
+    },
+    "@resupaflare/web#build": {
+      "outputs": [
+        "build/**",
+        "public/build/**",
+        "functions/\\[path\\].js",
+        "functions/\\[path\\].js.map"
+      ]
     }
   }
 }
