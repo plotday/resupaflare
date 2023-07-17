@@ -1,5 +1,8 @@
+import type { AppLoadContext } from "@remix-run/cloudflare";
 import type { Database } from "@resupaflare/db";
 import { createServerClient as createSupabaseClient } from "@supabase/auth-helpers-remix";
+
+import { getEnv } from "./env";
 
 export { safeQuery } from "@resupaflare/db";
 
@@ -15,16 +18,29 @@ export const cookieOptions = {
   path: "/",
 };
 
+export const getSupabaseEnv = (context: AppLoadContext) => ({
+  url: getEnv(context).SUPABASE_URL,
+  key: getEnv(context).SUPABASE_ANON_KEY,
+});
+
+export const getSupabaseServiceEnv = (context: AppLoadContext) => ({
+  url: getEnv(context).SUPABASE_URL,
+  key: getEnv(context).SUPABASE_SERVICE_KEY,
+});
+
 export const createServerClient = (
-  supabaseUrl: string,
-  supabaseKey: string,
+  supabaseConfig: { url: string; key: string },
   request: Request
 ) => {
   const response = new Response();
-  const supabase = createSupabaseClient<Database>(supabaseUrl, supabaseKey, {
-    request,
-    response,
-    cookieOptions,
-  });
+  const supabase = createSupabaseClient<Database>(
+    supabaseConfig.url,
+    supabaseConfig.key,
+    {
+      request,
+      response,
+      cookieOptions,
+    }
+  );
   return { response, supabase };
 };

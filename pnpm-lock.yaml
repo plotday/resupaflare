@@ -64,6 +64,9 @@ importers:
       '@supabase/supabase-js':
         specifier: ^2.26.0
         version: 2.26.0
+      '@tabler/icons-react':
+        specifier: ^2.26.0
+        version: 2.26.0(react@18.2.0)
       isbot:
         specifier: ^3.6.8
         version: 3.6.8
@@ -73,6 +76,9 @@ importers:
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
+      react-social-login-buttons:
+        specifier: ^3.9.1
+        version: 3.9.1(react@18.2.0)
       zod:
         specifier: ^3.21.4
         version: 3.21.4
@@ -2691,6 +2697,20 @@ packages:
     dependencies:
       defer-to-connect: 2.0.1
     dev: true
+
+  /@tabler/icons-react@2.26.0(react@18.2.0):
+    resolution: {integrity: sha512-IRhaSfCIRy2uMcUHQxJBSrQWh7KcTFFpGGqvYf+5YITWgr7HD2ipuBCR9d5MYx9o6DqM/B+9kKaUU63JA+dt0A==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@tabler/icons': 2.26.0
+      prop-types: 15.8.1
+      react: 18.2.0
+    dev: false
+
+  /@tabler/icons@2.26.0:
+    resolution: {integrity: sha512-fYUgqy2txHrFLxhO54lFbNCLdTIf0WtEwABdQ70fH/C6WvGDWpXSln7ntUwK1Z3MNtBkoyXUhtJgtue1yP8Gww==}
+    dev: false
 
   /@testing-library/dom@8.20.1:
     resolution: {integrity: sha512-/DiOQ5xBxgdYRC8LNk7U+RWat0S3qRLeIw3ZIkMQ9kkVlRmwD/Eg8k8CqIpD6GW7u20JIUOfMKbxtiLutpjQ4g==}
@@ -7905,6 +7925,14 @@ packages:
       react: '>=16.8'
     dependencies:
       '@remix-run/router': 1.7.1
+      react: 18.2.0
+    dev: false
+
+  /react-social-login-buttons@3.9.1(react@18.2.0):
+    resolution: {integrity: sha512-KtucVWvdnIZ0icG99WJ3usQUJYmlKsOIBYGyngcuNSVyyYdZtif4KHY80qnCg+teDlgYr54ToQtg3x26ZqaS2w==}
+    peerDependencies:
+      react: ^15.0.0 || ^16.0.0 || ^17.x || ^18.x
+    dependencies:
       react: 18.2.0
     dev: false
 

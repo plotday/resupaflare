@@ -22,9 +22,11 @@
     "@resupaflare/db": "workspace:^",
     "@supabase/auth-helpers-remix": "^0.2.1",
     "@supabase/supabase-js": "^2.26.0",
+    "@tabler/icons-react": "^2.26.0",
     "isbot": "^3.6.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-social-login-buttons": "^3.9.1",
     "zod": "^3.21.4"
   },
   "devDependencies": {

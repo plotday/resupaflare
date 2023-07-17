@@ -26,14 +26,13 @@ import { User, createBrowserClient } from "@supabase/auth-helpers-remix";
 import { SupabaseClient } from "@supabase/supabase-js";
 import { useEffect, useMemo, useState } from "react";
 
-import { cookieOptions, createServerClient } from "./db";
+import { cookieOptions, createServerClient, getSupabaseEnv } from "./db";
 import { getEnv } from "./env";
 
 export const loader = async ({ context, request }: LoaderArgs) => {
   const env = getEnv(context);
   const { response, supabase } = createServerClient(
-    env.SUPABASE_URL,
-    env.SUPABASE_ANON_KEY,
+    getSupabaseEnv(context),
     request
   );
 
