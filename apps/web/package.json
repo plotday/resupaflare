@@ -11,8 +11,8 @@
     "lint": "tsc && eslint ."
   },
   "dependencies": {
-    "@mantine/core": "7.0.0-alpha.17",
-    "@mantine/hooks": "7.0.0-alpha.17",
+    "@mantine/core": "7.0.0-alpha.18",
+    "@mantine/hooks": "7.0.0-alpha.18",
     "@remix-run/cloudflare": "^1.18.1",
     "@remix-run/cloudflare-pages": "^1.18.1",
     "@remix-run/css-bundle": "^1.18.1",

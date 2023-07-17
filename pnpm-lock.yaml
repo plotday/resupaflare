@@ -38,11 +38,11 @@ importers:
   apps/web:
     dependencies:
       '@mantine/core':
-        specifier: 7.0.0-alpha.17
-        version: 7.0.0-alpha.17(@mantine/hooks@7.0.0-alpha.17)(@types/react@18.2.5)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 7.0.0-alpha.18
+        version: 7.0.0-alpha.18(@mantine/hooks@7.0.0-alpha.18)(@types/react@18.2.5)(react-dom@18.2.0)(react@18.2.0)
       '@mantine/hooks':
-        specifier: 7.0.0-alpha.17
-        version: 7.0.0-alpha.17(react@18.2.0)
+        specifier: 7.0.0-alpha.18
+        version: 7.0.0-alpha.18(react@18.2.0)
       '@remix-run/cloudflare':
         specifier: ^1.18.1
         version: 1.18.1(@cloudflare/workers-types@3.19.0)
@@ -2316,33 +2316,31 @@ packages:
     resolution: {integrity: sha512-Lg3PnLp0QXpxwLIAuuJboLeRaIhrgJjeuh797QADg3xz8wGLugQOS5DpsE8A6i6Adgzf+bacllkKZG3J0tGfDw==}
     dev: true
 
-  /@mantine/core@7.0.0-alpha.17(@mantine/hooks@7.0.0-alpha.17)(@types/react@18.2.5)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-EU05qxY+tAw+RfAg0WQmIIxOQZq5CoXKWmJTvYlc9uInpU9TCf7vDa5MPiYyB6EGyl9hRFe1LtnkScHDKQouzw==}
+  /@mantine/core@7.0.0-alpha.18(@mantine/hooks@7.0.0-alpha.18)(@types/react@18.2.5)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-FPnws/NvCU+w/X0GwWfqCjCYsMTQMhHAdzWT5qD769ocO2LvqAouY/bGU3b1LKSjG/T/FY0ngAv/4kWYJn56mg==}
     peerDependencies:
-      '@mantine/hooks': 7.0.0-alpha.17
+      '@mantine/hooks': 7.0.0-alpha.18
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
     dependencies:
       '@floating-ui/react': 0.19.2(react-dom@18.2.0)(react@18.2.0)
-      '@mantine/hooks': 7.0.0-alpha.17(react@18.2.0)
+      '@mantine/hooks': 7.0.0-alpha.18(react@18.2.0)
       clsx: 1.1.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-remove-scroll: 2.5.6(@types/react@18.2.5)(react@18.2.0)
       react-textarea-autosize: 8.3.4(@types/react@18.2.5)(react@18.2.0)
-      tslib: 2.6.0
       type-fest: 3.13.0
     transitivePeerDependencies:
       - '@types/react'
     dev: false
 
-  /@mantine/hooks@7.0.0-alpha.17(react@18.2.0):
-    resolution: {integrity: sha512-AIJmUKqIDWuWaapCME/ct+k+vu7WRBZX+gOJYBe6FxrsHY617bO/bHJQNiKZqVmJqNGvhl3bdCl+SiJyjHDQjw==}
+  /@mantine/hooks@7.0.0-alpha.18(react@18.2.0):
+    resolution: {integrity: sha512-9XEGMjtdgUifvO+EwLdmISIQv585WPOKzYTKyji+XKug+iRhDJzgunF1FHEl49+rFTJqV1OMsW4K+XP28kiaAg==}
     peerDependencies:
       react: '>=18.0.0'
     dependencies:
       react: 18.2.0
-      tslib: 2.6.0
     dev: false
 
   /@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1:
@@ -2406,7 +2404,7 @@ packages:
       is-glob: 4.0.3
       open: 9.1.0
       picocolors: 1.0.0
-      tslib: 2.5.0
+      tslib: 2.6.0
     dev: true
 
   /@remix-run/cloudflare-pages@1.18.1(@cloudflare/workers-types@3.19.0):
@@ -3361,14 +3359,14 @@ packages:
     resolution: {integrity: sha512-x1FCFnFifvYDDzTaLII71vG5uvDwgtmDTEVWAxrgeiR8VjMONcCXJx7E+USjDtHlwFmt9MysbqgF9b9Vjr6w+w==}
     engines: {node: '>=4'}
     dependencies:
-      tslib: 2.5.0
+      tslib: 2.6.0
     dev: true
 
   /ast-types@0.15.2:
     resolution: {integrity: sha512-c27loCv9QkZinsa5ProX751khO9DJl/AcB5c2KNtA6NRvHKS0PgLfcftz72KVq504vB0Gku5s2kUZzDBvQWvHg==}
     engines: {node: '>=4'}
     dependencies:
-      tslib: 2.5.0
+      tslib: 2.6.0
     dev: true
 
   /astring@1.8.6:
@@ -3674,7 +3672,7 @@ packages:
     resolution: {integrity: sha512-XKxXAC3HVPv7r674zP0VC3RTXz+/JKhfyw94ljvF80yynK6VkTnqE3jMuN8b3dUVmmc43TjyxjW4KTsmB3c86g==}
     dependencies:
       debug: 4.3.4
-      tslib: 2.5.0
+      tslib: 2.6.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -8185,7 +8183,7 @@ packages:
   /rxjs@7.8.1:
     resolution: {integrity: sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==}
     dependencies:
-      tslib: 2.5.0
+      tslib: 2.6.0
     dev: true
 
   /sade@1.8.1:
@@ -8632,7 +8630,7 @@ packages:
     engines: {node: ^14.18.0 || >=16.0.0}
     dependencies:
       '@pkgr/utils': 2.4.0
-      tslib: 2.5.0
+      tslib: 2.6.0
     dev: true
 
   /tabbable@6.2.0:
@@ -8810,7 +8808,6 @@ packages:
 
   /tslib@2.6.0:
     resolution: {integrity: sha512-7At1WUettjcSRHXCyYtTselblcHl9PJFFVKiCAy/bY97+BPZXSQ2wbq0P9s8tK2G7dFQfNnlJnPAiArVBVBsfA==}
-    dev: false
 
   /tsutils@3.21.0(typescript@5.1.6):
     resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==}
