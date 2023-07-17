@@ -25,6 +25,8 @@ git grep -l '@resupaflare' | xargs sed -i '' -e 's/@resupaflare/@NEW_SCOPE/g'
 
 1. [Install pnpm](https://pnpm.io/installation)
 1. `pnpm install`
+1. Create `.env.development.local` and add the required variables from
+   `.env.development`
 
 ## Hosting setup
 

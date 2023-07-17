@@ -1,0 +1,5 @@
+#!/bin/bash
+ 
+if [ -z ${NODE_ENV} ]; then export NODE_ENV=development; fi
+
+export $(cat .env .env.$NODE_ENV .env.local .env.$NODE_ENV.local 2> /dev/null | grep -v '^#' | xargs -0)

@@ -1,0 +1,16 @@
+#!/bin/bash
+ 
+if [ ! -f "$1" ]; then
+  echo "Usage: gen-env PATH_TO_ENV_VARS"
+  exit 1
+fi
+
+if [ -z ${NODE_ENV} ]; then NODE_ENV=development; fi
+
+ENV_PATH="$(dirname -- "${BASH_SOURCE[0]}")/.."
+
+ALL_VARS=$(cat $ENV_PATH/.env $ENV_PATH/.env.$NODE_ENV $ENV_PATH/.env.local $ENV_PATH/.env.$NODE_ENV.local 2> /dev/null | grep -v '^#')
+
+while IFS= read -r var_name; do
+  echo "$ALL_VARS" | grep -w "$var_name" | tail -1
+done < $1

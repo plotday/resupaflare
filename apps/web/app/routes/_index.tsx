@@ -1,9 +1,11 @@
 import { Container, Title } from "@mantine/core";
 import type { V2_MetaFunction } from "@remix-run/cloudflare";
 
+import { APP_NAME } from "../config";
+
 export const meta: V2_MetaFunction = () => {
   return [
-    { title: "New Remix App" },
+    { title: APP_NAME },
     { name: "description", content: "Welcome to Remix!" },
   ];
 };
@@ -11,7 +13,7 @@ export const meta: V2_MetaFunction = () => {
 export default function Index() {
   return (
     <Container>
-      <Title>Welcome to Resupaflare</Title>
+      <Title>Welcome to {APP_NAME}</Title>
       <ul>
         <li>
           <a target="_blank" href="https://remix.run/" rel="noreferrer">
