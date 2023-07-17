@@ -6,6 +6,7 @@
     "build:web": "turbo run build --filter=@resupaflare/web && ln -sfn apps/web/functions functions",
     "dev": "turbo run dev",
     "gen-types": "turbo run gen-types",
+    "gen-migration": "pnpm --filter @resupaflare/db run gen-migration",
     "lint": "pnpm install --frozen-lockfile && turbo run lint",
     "test": "turbo run test",
     "test:watch": "turbo run test:watch",

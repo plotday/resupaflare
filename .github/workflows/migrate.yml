@@ -4,10 +4,9 @@ on:
   push:
     branches:
       - "**"
-  workflow_dispatch:
 
 jobs:
-  release:
+  migrate:
     runs-on: ubuntu-latest
 
     env:

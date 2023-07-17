@@ -24,6 +24,7 @@ git grep -l '@resupaflare' | xargs sed -i '' -e 's/@resupaflare/@NEW_SCOPE/g'
 ## Local setup
 
 1. [Install pnpm](https://pnpm.io/installation)
+1. [Install pgFormatter](https://github.com/darold/pgFormatter) (on MacOS: `brew install pgformatter`)
 1. `pnpm install`
 1. Create `.env.development.local` and add the required variables from
    `.env.development`
@@ -37,6 +38,11 @@ git grep -l '@resupaflare' | xargs sed -i '' -e 's/@resupaflare/@NEW_SCOPE/g'
 
 After making local changes to the DB, run `pnpm gen-types`. This generates
 `packages/db/src/types.ts`, which should be checked in with the changes.
+
+### Generating a migration
+
+Migrations are applied by GitHub Actions. Generate a migration using `pnpm
+gen-migration MIGRATION_NAME` and include it with the relevant change.
 
 ## Updating Remix
 

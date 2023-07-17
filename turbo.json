@@ -24,6 +24,9 @@
     "@resupaflare/db#gen-types": {
       "dependsOn": ["@resupaflare/db#start"]
     },
+    "@resupaflare/db#gen-migration": {
+      "dependsOn": ["@resupaflare/db#start"]
+    },
     "@resupaflare/web#build": {
       "outputs": [
         "build/**",

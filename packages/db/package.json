@@ -8,10 +8,10 @@
     "start": "export $(../../scripts/gen-env) && supabase start",
     "stop": "export $(../../scripts/gen-env) && supabase stop",
     "restart": "pnpm run stop && pnpm run start",
-    "gen-types": "supabase gen types typescript --local > src/types.ts",
+    "gen-types": "export $(../../scripts/gen-env) && supabase gen types typescript --local > src/types.ts",
+    "gen-migration": "export $(../../scripts/gen-env) && supabase db diff | pg_format | supabase migration new",
     "reset": "supabase db reset",
     "diff-remote": "supabase db diff --linked | supabase migration new init",
-    "new-migration": "supabase db diff | supabase migration new",
     "push": "supabase db push",
     "dump-seed": "supabase db dump --data-only -f supabase/seed.sql"
   },
