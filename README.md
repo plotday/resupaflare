@@ -7,6 +7,7 @@ A highly opinionated full-stack starter monorepo.
 - CI/CD: [GitHub Actions](https://github.com/features/actions)
 - Language: [Typescript](https://www.typescriptlang.org/)
 - Web: [Remix](https://remix.run/)
+- UI: [Mantine](https://mantine.dev/) (using [v7 alpha](https://v7.mantine.dev/getting-started) since the switch to static CSS works better with SSR)
 - DB: [Supabase](https://supabase.com/)
 - Hosting: [Cloudflare Pages](https://pages.cloudflare.com/)
 - Server runtime: [Cloudflare Workers](https://workers.cloudflare.com/)
@@ -38,6 +39,11 @@ git grep -l '@resupaflare' | xargs sed -i '' -e 's/@resupaflare/@NEW_SCOPE/g'
 
 `pnpm dev`
 
+### Updating DB types
+
+After making local changes to the DB, run `pnpm gen-types`. This generates
+`packages/db/src/types.ts`, which should be checked in with the changes.
+
 ## Patching
 
 Remix is patched to fix the sourcemap path escaping for Cloudflare functions.
@@ -47,11 +53,3 @@ To update the patch for a new Remix version:
 1. `pnpm patch @remix-run/dev@[VERSION]`
 1. Edit `[TMP_PATH]/dist/compiler/server/write.js` (see the previous diff for the change).
 1. `pnpm patch-commit [TMP_PATH]`
-
-## TODO
-
-- [ ] Mantine
-- [ ] Supabase
-- [ ] Cloudflare Worker
-- [ ] tests
-- [ ] Sentry

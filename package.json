@@ -5,8 +5,10 @@
     "build": "turbo run build",
     "build:web": "turbo run build --filter=@resupaflare/web && ln -sfn apps/web/functions functions",
     "dev": "turbo run dev",
+    "gen-types": "turbo run gen-types",
     "lint": "pnpm install --frozen-lockfile && turbo run lint",
     "test": "turbo run test",
+    "test:watch": "turbo run test:watch",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
@@ -19,7 +21,7 @@
     "vitest": "^0.33.0"
   },
   "packageManager": "pnpm@8.6.6",
-  "name": "plot",
+  "name": "resupaflare",
   "pnpm": {
     "patchedDependencies": {
       "@remix-run/dev@1.18.1": "patches/@remix-run__dev@1.18.1.patch"

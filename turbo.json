@@ -5,7 +5,7 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**"]
+      "outputs": ["build/**"]
     },
     "lint": {},
     "test": {},
@@ -15,7 +15,14 @@
     },
     "dev": {
       "cache": false,
-      "persistent": true
+      "persistent": true,
+      "dependsOn": ["@resupaflare/db#start"]
+    },
+    "@resupaflare/db#start": {
+      "persistent": false
+    },
+    "@resupaflare/db#gen-types": {
+      "dependsOn": ["@resupaflare/db#start"]
     }
   }
 }
