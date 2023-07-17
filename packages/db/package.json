@@ -1,0 +1,24 @@
+{
+  "name": "@resupaflare/db",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "export $(../../scripts/gen-env) && supabase start",
+    "stop": "export $(../../scripts/gen-env) && supabase stop",
+    "restart": "pnpm run stop && pnpm run start",
+    "gen-types": "export $(../../scripts/gen-env) && supabase gen types typescript --local > src/types.ts",
+    "gen-migration": "export $(../../scripts/gen-env) && supabase db diff | pg_format | supabase migration new",
+    "reset": "supabase db reset",
+    "diff-remote": "supabase db diff --linked | supabase migration new init",
+    "push": "supabase db push",
+    "dump-seed": "supabase db dump --data-only -f supabase/seed.sql"
+  },
+  "devDependencies": {
+    "supabase": "^1.77.9"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.26.0"
+  }
+}

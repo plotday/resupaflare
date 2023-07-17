@@ -6,20 +6,29 @@
   "type": "module",
   "scripts": {
     "build": "remix build",
-    "dev": "remix dev --no-restart -c \"npm run start\"",
-    "start": "wrangler pages dev --compatibility-date=2023-06-21 ./public",
+    "dev": "pnpm run dev:config && pnpm run dev:start",
+    "dev:config": "../../scripts/gen-env > .dev.vars",
+    "dev:start": "WORKERS_ENV=development remix dev --no-restart -c \"npm run start\"",
+    "start": "wrangler pages dev --env $WORKERS_ENV --compatibility-date=2023-06-21 ./public",
     "lint": "tsc && eslint ."
   },
   "dependencies": {
-    "@mantine/core": "7.0.0-alpha.17",
-    "@mantine/hooks": "7.0.0-alpha.17",
+    "@mantine/core": "7.0.0-alpha.18",
+    "@mantine/hooks": "7.0.0-alpha.18",
     "@remix-run/cloudflare": "^1.18.1",
     "@remix-run/cloudflare-pages": "^1.18.1",
     "@remix-run/css-bundle": "^1.18.1",
     "@remix-run/react": "^1.18.1",
+    "@resupaflare/db": "workspace:^",
+    "@supabase/auth-helpers-remix": "^0.2.1",
+    "@supabase/supabase-js": "^2.26.0",
+    "@tabler/icons-react": "^2.26.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "isbot": "^3.6.8",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-social-login-buttons": "^3.9.1",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^3.19.0",
