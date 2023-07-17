@@ -5,8 +5,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "supabase start",
-    "stop": "supabase stop",
+    "start": "export $(../../scripts/gen-env) && supabase start",
+    "stop": "export $(../../scripts/gen-env) && supabase stop",
     "restart": "pnpm run stop && pnpm run start",
     "gen-types": "supabase gen types typescript --local > src/types.ts",
     "reset": "supabase db reset",

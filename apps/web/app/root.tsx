@@ -6,7 +6,11 @@ import {
   Title,
 } from "@mantine/core";
 import "@mantine/core/styles.css";
-import type { LinksFunction, LoaderArgs } from "@remix-run/cloudflare";
+import type {
+  LinksFunction,
+  LoaderArgs,
+  V2_MetaFunction,
+} from "@remix-run/cloudflare";
 import { json } from "@remix-run/cloudflare";
 import { cssBundleHref } from "@remix-run/css-bundle";
 import {
@@ -24,8 +28,9 @@ import {
 import type { Database } from "@resupaflare/db";
 import { User, createBrowserClient } from "@supabase/auth-helpers-remix";
 import { SupabaseClient } from "@supabase/supabase-js";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo } from "react";
 
+import { APP_NAME } from "./config";
 import { cookieOptions, createServerClient, getSupabaseEnv } from "./db";
 import { getEnv } from "./env";
 
@@ -58,6 +63,10 @@ export const loader = async ({ context, request }: LoaderArgs) => {
 export type SupabaseOutletContext = {
   supabase?: SupabaseClient<Database>;
   user?: User;
+};
+
+export const meta: V2_MetaFunction = () => {
+  return [{ title: APP_NAME }];
 };
 
 export const links: LinksFunction = () => [
@@ -127,7 +136,8 @@ export function ErrorBoundary() {
 export default function App() {
   const { env, user, session } = useLoaderData<typeof loader>();
 
-  const [supabase] = useState(() => {
+  const supabase = useMemo(() => {
+    if (typeof document === "undefined") return null;
     try {
       return createBrowserClient<Database>(
         env.SUPABASE_URL,
@@ -142,7 +152,7 @@ export default function App() {
       console.error(error);
       return null;
     }
-  });
+  }, [env]);
 
   const { revalidate } = useRevalidator();
   useEffect(() => {
