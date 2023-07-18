@@ -10,7 +10,8 @@
     "lint": "pnpm install --frozen-lockfile && turbo run lint",
     "test": "turbo run test",
     "test:watch": "turbo run test:watch",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "restart": "turbo run stop && turbo run start"
   },
   "devDependencies": {
     "@resupaflare/eslint-config-custom": "workspace:*",

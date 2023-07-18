@@ -33,10 +33,17 @@ import { useEffect, useMemo } from "react";
 
 import { APP_NAME } from "./config";
 import { cookieOptions, createServerClient, getSupabaseEnv } from "./db";
-import { getEnv } from "./env";
+import { getBrowserEnv, getEnv } from "./env";
+import {
+  SentryClientInit,
+  SentryServerInit,
+  captureRemixErrorBoundaryError,
+} from "./sentry";
 
 export const loader = async ({ context, request }: LoaderArgs) => {
   const env = getEnv(context);
+  if (env.SENTRY_DSN) SentryServerInit(env.SENTRY_DSN, request);
+
   const { response, supabase } = createServerClient(
     getSupabaseEnv(context),
     request
@@ -51,7 +58,7 @@ export const loader = async ({ context, request }: LoaderArgs) => {
 
   return json(
     {
-      env,
+      env: getBrowserEnv(context),
       session,
       user,
     },
@@ -98,37 +105,37 @@ function Page({ children }: { children: React.ReactNode }) {
 
 export function ErrorBoundary() {
   const error = useRouteError();
+
   let title = "Something went wrong";
   let message;
   if (isRouteErrorResponse(error)) {
     title = "Page not found";
-    message = `${error.status} ${error.statusText}`;
-  } else if (error instanceof Error) {
-    if (error.stack) {
-      message = error.stack;
-    } else {
-      message = error.message;
-    }
-  } else if (typeof error === "string") {
-    message = error;
-  } else if (
-    error &&
-    typeof error === "object" &&
-    "message" in error &&
-    typeof error.message === "string"
-  ) {
-    message = error.message;
   } else {
-    message = "Unknown error";
+    captureRemixErrorBoundaryError(error);
+    if (error instanceof Error) {
+      if (error.stack) {
+        message = error.stack;
+      } else {
+        message = error.message;
+      }
+    } else if (typeof error === "string") {
+      message = error;
+    } else if (
+      error &&
+      typeof error === "object" &&
+      "message" in error &&
+      typeof error.message === "string"
+    ) {
+      message = error.message;
+    } else {
+      message = "Unknown error";
+    }
   }
-  console.log(title);
   return (
     <Page>
       <Container mt="xl">
         <Title mb="md">{title}</Title>
-        <Text>
-          <pre>{message}</pre>
-        </Text>
+        <Text>{message}</Text>
       </Container>
     </Page>
   );
@@ -136,6 +143,8 @@ export function ErrorBoundary() {
 
 export default function App() {
   const { env, user, session } = useLoaderData<typeof loader>();
+
+  if (env.SENTRY_DSN) SentryClientInit(env.SENTRY_DSN);
 
   const supabase = useMemo(() => {
     if (typeof document === "undefined") return null;

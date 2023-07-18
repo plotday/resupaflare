@@ -1,13 +1,13 @@
-/**
- * By default, Remix will handle generating the HTTP Response for you.
- * You are free to delete this file if you'd like to, but if you ever want it revealed again, you can run `npx remix reveal` ✨
- * For more information, see https://remix.run/file-conventions/entry.server
- */
-
-import type { AppLoadContext, EntryContext } from "@remix-run/cloudflare";
+import type {
+  AppLoadContext,
+  DataFunctionArgs,
+  EntryContext,
+} from "@remix-run/cloudflare";
 import { RemixServer } from "@remix-run/react";
 import isbot from "isbot";
 import { renderToReadableStream } from "react-dom/server";
+
+import { Sentry } from "./sentry";
 
 export default async function handleRequest(
   request: Request,
@@ -37,4 +37,19 @@ export default async function handleRequest(
     headers: responseHeaders,
     status: responseStatusCode,
   });
+}
+
+export function handleError(
+  error: unknown,
+  { request }: DataFunctionArgs
+): void {
+  // if (isRouteErrorResponse(error)) {
+  //   console.error(`${error.status} ${error.statusText}`);
+  if (error instanceof Error) {
+    // TODO: Once Sentry supports Cloudflare Workers (replacing Toucan):
+    // Sentry.captureRemixServerException(error, "remix.server", request);
+    console.log("Unhandled error", Sentry);
+    Sentry?.captureException?.(error);
+    console.error(error);
+  }
 }
