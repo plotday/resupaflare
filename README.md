@@ -12,13 +12,35 @@ A highly opinionated full-stack starter monorepo.
 - Hosting: [Cloudflare Pages](https://pages.cloudflare.com/)
 - Server runtime: [Cloudflare Workers](https://workers.cloudflare.com/)
 
-## After forking
+## Getting started
 
-You'll want to rename the `@resupaflare` scope to something matching your
-project:
+You'll likely want to duplicate this repo, rather than forking it:
 
 ```bash
+# Make a bare clone
+git clone --bare https://github.com/PlotTech/resupaflare.git
+cd resupaflare
+git push --mirror https://github.com/USERNAME/NEW_REPO.git
+cd ..
+rm -rf resupaflare
+
+# Clone the new repo
+git clone https://github.com/USERNAME/NEW_REPO.git
+cd NEW_REPO
 git grep -l '@resupaflare' | xargs sed -i '' -e 's/@resupaflare/@NEW_SCOPE/g'
+git commit -am "Set package scope"
+git push origin master
+```
+
+## Updating
+
+To pull the latest changes from this repo:
+
+```bash
+cd YOUR_REPO
+git remote add public https://github.com/PlotTech/resupaflare.git
+git pull public master
+git push origin master
 ```
 
 ## Local setup
