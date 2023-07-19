@@ -14,7 +14,7 @@
     "dev:config": "../../scripts/gen-env > .dev.vars",
     "dev:start": "export WORKERS_ENV=development && remix dev --no-restart -c \"npm run start\"",
     "start": "wrangler pages dev --env $WORKERS_ENV --compatibility-date=2023-06-21 ./public",
-    "lint": "tsc && eslint ."
+    "lint": "export VERSION=lint && pnpm set-version && tsc && eslint ."
   },
   "dependencies": {
     "@cloudflare/pages-plugin-sentry": "^1.1.1",
