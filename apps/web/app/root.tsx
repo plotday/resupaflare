@@ -146,8 +146,9 @@ export function ErrorBoundary() {
 export default function App() {
   const { env, user, session } = useLoaderData<typeof loader>();
 
-  if (env.SENTRY_DSN) SentryClientInit(env.SENTRY_DSN);
-  if (user && Sentry) Sentry.setUser({ id: user.id, email: user.email });
+  if (!Sentry && env.SENTRY_DSN) {
+    SentryClientInit(env.SENTRY_DSN, user);
+  }
 
   const supabase = useMemo(() => {
     if (typeof document === "undefined") return null;
