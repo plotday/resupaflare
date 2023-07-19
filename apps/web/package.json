@@ -6,10 +6,13 @@
   "type": "module",
   "scripts": {
     "set-version": "mkdir -p build && echo export const VERSION = \\\"$VERSION\\\" > build/version.ts",
-    "build": "VERSION=$CF_PAGES_COMMIT_SHA pnpm --filter @resupaflare/web run set-version && remix build",
-    "dev": "VERSION=development pnpm --filter @resupaflare/web run set-version && pnpm --filter @resupaflare/web run dev:config && pnpm --filter @resupaflare/web run dev:start",
+    "build": "export VERSION=$CF_PAGES_COMMIT_SHA && pnpm run set-version && remix build --sourcemap && pnpm upload-source-map-server && pnpm upload-source-map-browser && pnpm delete-source-map",
+    "upload-source-map-server": "export $(../../scripts/gen-env) && wrangler pages functions build --outdir bundled-functions --sourcemap && sentry-cli sourcemaps inject bundled-functions && sentry-cli sourcemaps upload --release=$VERSION --dist=server bundled-functions && rm -rf bundled-functions",
+    "upload-source-map-browser": "export $(../../scripts/gen-env) && sentry-cli sourcemaps inject public && sentry-cli sourcemaps upload --release=$VERSION --dist=browser public",
+    "delete-source-map": "find ./functions ./public/build -type f -name \"*.map\" -delete",
+    "dev": "export VERSION=development && pnpm run set-version && pnpm run dev:config && pnpm run dev:start",
     "dev:config": "../../scripts/gen-env > .dev.vars",
-    "dev:start": "WORKERS_ENV=development remix dev --no-restart -c \"npm run start\"",
+    "dev:start": "export WORKERS_ENV=development && remix dev --no-restart -c \"npm run start\"",
     "start": "wrangler pages dev --env $WORKERS_ENV --compatibility-date=2023-06-21 ./public",
     "lint": "tsc && eslint ."
   },
