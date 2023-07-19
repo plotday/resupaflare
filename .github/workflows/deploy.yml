@@ -15,6 +15,7 @@ jobs:
       SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
       SENTRY_ORG: ${{ vars.SENTRY_ORG }}
       SENTRY_PROJECT: ${{ vars.SENTRY_PROJECT }}
+      DEPLOY_ENV: ${{ vars.DEPLOY_ENV }}
 
     steps:
       - name: Checkout
