@@ -1,0 +1,4 @@
+{
+  "extends": "@resupaflare/tsconfig/worker.json",
+  "include": ["src/*.ts"]
+}

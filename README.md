@@ -59,7 +59,7 @@ git push origin master
 ### Updating DB types
 
 After making local changes to the DB, run `pnpm gen-types`. This generates
-`packages/db/src/types.ts`, which should be checked in with the changes.
+`libs/db/src/types.ts`, which should be checked in with the changes.
 
 ### Generating a migration
 
