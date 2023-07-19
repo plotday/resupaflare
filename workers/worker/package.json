@@ -1,0 +1,25 @@
+{
+  "name": "@resupaflare/worker",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "wrangler deploy --env ${DEPLOY_ENV:-production} --dry-run --outdir build --node-compat true",
+    "dev": "pnpm run dev:config && pnpm run dev:start",
+    "dev:config": "../../scripts/gen-env > .dev.vars",
+    "dev:start": "wrangler dev --env development",
+    "create-queues": "export $(../../scripts/gen-env) && wrangler queues create queue",
+    "deploy": "export RELEASE=$GITHUB_SHA && export $(../../scripts/gen-env) && pnpm build && pnpm source-map && wrangler deploy --var RELEASE:$RELEASE --env ${DEPLOY_ENV:-production} --no-bundle --node-compat false build/index.js",
+    "source-map": "export $(../../scripts/gen-env) && sentry-cli sourcemaps inject build && sentry-cli sourcemaps upload --release=$RELEASE --dist=worker build",
+    "lint": "tsc && eslint ."
+  },
+  "dependencies": {
+    "@resupaflare/db": "workspace:^",
+    "@supabase/supabase-js": "^2.26.0",
+    "toucan-js": "^3.1.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20230419.0",
+    "@resupaflare/eslint-config-custom": "workspace:*",
+    "@resupaflare/tsconfig": "workspace:*"
+  }
+}

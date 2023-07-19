@@ -1,4 +1,4 @@
-name: Lint
+name: Deploy workers
 on:
   push:
     branches:
@@ -6,12 +6,24 @@ on:
 permissions:
   contents: read
 jobs:
-  run-linters:
-    name: Run linters
+  deploy:
+    name: Deploy workers
     runs-on: ubuntu-latest
+
+    environment: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
+
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+      SENTRY_ORG: ${{ vars.SENTRY_ORG }}
+      SENTRY_PROJECT: ${{ vars.SENTRY_PROJECT }}
+      DEPLOY_ENV: ${{ vars.DEPLOY_ENV }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
 
       - name: Install Node.js
         uses: actions/setup-node@v3
@@ -42,5 +54,5 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Run linters
-        run: pnpm lint
+      - name: Run deploy
+        run: pnpm run deploy:workers:changed
