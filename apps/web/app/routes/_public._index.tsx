@@ -21,6 +21,13 @@ export default function Index() {
         </Button>
       )}
       {user && <Button onClick={logout}>Sign out</Button>}
+      <Button
+        onClick={() => {
+          throw Error("Boom!");
+        }}
+      >
+        Blow up
+      </Button>
       <ul>
         <li>
           <a href="https://remix.run/">Remix</a>
