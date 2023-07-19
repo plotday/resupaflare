@@ -29,7 +29,7 @@ export default {
   async fetch(
     req: Request,
     env: Env,
-    ctx: ExecutionContext
+    _ctx: ExecutionContext
   ): Promise<Response> {
     // To send a message on a queue, we need to create the queue first
     // https://developers.cloudflare.com/queues/get-started/#3-create-a-queue
@@ -42,7 +42,7 @@ export default {
   },
   // The queue handler is invoked when a batch of messages is ready to be delivered
   // https://developers.cloudflare.com/queues/platform/javascript-apis/#messagebatch
-  async queue(batch: MessageBatch<Error>, env: Env): Promise<void> {
+  async queue(batch: MessageBatch<Error>, _env: Env): Promise<void> {
     // A queue consumer can make requests to other endpoints on the Internet,
     // write to R2 object storage, query a D1 Database, and much more.
     for (let message of batch.messages) {
