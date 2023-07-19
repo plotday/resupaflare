@@ -7,6 +7,9 @@
       "dependsOn": ["^build"],
       "outputs": ["build/**"]
     },
+    "deploy": {
+      "dependsOn": ["^build", "build"]
+    },
     "lint": {},
     "test": {},
     "test:watch": {

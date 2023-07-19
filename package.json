@@ -4,6 +4,8 @@
   "scripts": {
     "build": "turbo run build",
     "build:web": "turbo run build --filter=@resupaflare/web && ln -sfn apps/web/functions functions",
+    "deploy:workers": "turbo deploy --filter={./workers/*}",
+    "deploy:workers:changed": "turbo deploy --filter={./workers/*}...[HEAD^1]",
     "dev": "turbo run dev",
     "gen-types": "turbo run gen-types",
     "gen-migration": "pnpm --filter @resupaflare/db run gen-migration",

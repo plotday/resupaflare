@@ -1,4 +1,4 @@
-name: Lint
+name: Deploy workers
 on:
   push:
     branches:
@@ -6,8 +6,8 @@ on:
 permissions:
   contents: read
 jobs:
-  run-linters:
-    name: Run linters
+  deploy:
+    name: Deploy workers
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -42,5 +42,5 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Run linters
-        run: pnpm lint
+      - name: Run deploy
+        run: pnpm run deploy:workers:changed
