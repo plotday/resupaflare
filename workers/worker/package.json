@@ -7,8 +7,8 @@
     "dev": "pnpm run dev:config && pnpm run dev:start",
     "dev:config": "../../scripts/gen-env > .dev.vars",
     "dev:start": "wrangler dev --env development",
-    "create-queues": "wrangler queues create queue",
-    "deploy": "export RELEASE=$GITHUB_SHA && pnpm build && pnpm source-map && wrangler deploy --var RELEASE:$RELEASE --env ${DEPLOY_ENV:-production} --no-bundle --node-compat false build/index.js",
+    "create-queues": "export $(../../scripts/gen-env) && wrangler queues create queue",
+    "deploy": "export RELEASE=$GITHUB_SHA && export $(../../scripts/gen-env) && pnpm build && pnpm source-map && wrangler deploy --var RELEASE:$RELEASE --env ${DEPLOY_ENV:-production} --no-bundle --node-compat false build/index.js",
     "source-map": "export $(../../scripts/gen-env) && sentry-cli sourcemaps inject build && sentry-cli sourcemaps upload --release=$RELEASE --dist=worker build",
     "lint": "tsc && eslint ."
   },
