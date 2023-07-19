@@ -35,6 +35,7 @@ import { APP_NAME } from "./config";
 import { cookieOptions, createServerClient, getSupabaseEnv } from "./db";
 import { getBrowserEnv, getEnv } from "./env";
 import {
+  Sentry,
   SentryClientInit,
   SentryServerInit,
   captureRemixErrorBoundaryError,
@@ -55,6 +56,7 @@ export const loader = async ({ context, request }: LoaderArgs) => {
   const {
     data: { user },
   } = await supabase.auth.getUser();
+  if (user && Sentry) Sentry.setUser({ id: user.id, email: user.email });
 
   return json(
     {
@@ -145,6 +147,7 @@ export default function App() {
   const { env, user, session } = useLoaderData<typeof loader>();
 
   if (env.SENTRY_DSN) SentryClientInit(env.SENTRY_DSN);
+  if (user && Sentry) Sentry.setUser({ id: user.id, email: user.email });
 
   const supabase = useMemo(() => {
     if (typeof document === "undefined") return null;

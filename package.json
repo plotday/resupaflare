@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "@resupaflare/eslint-config-custom": "workspace:*",
+    "@sentry/cli": "^2.19.4",
     "@trivago/prettier-plugin-sort-imports": "^4.1.1",
     "@turbo/gen": "^1.9.7",
     "eslint": "^8.38.0",
