@@ -17,9 +17,11 @@ A highly opinionated full-stack starter monorepo.
 You'll likely want to duplicate this repo, rather than forking it:
 
 ```bash
+# First, create a blank NEW_REPO on GitHub.
+
 # Make a bare clone
 git clone --bare https://github.com/PlotTech/resupaflare.git
-cd resupaflare
+cd resupaflare.git
 git push --mirror https://github.com/USERNAME/NEW_REPO.git
 cd ..
 rm -rf resupaflare
@@ -59,7 +61,7 @@ git push origin master
 ### Updating DB types
 
 After making local changes to the DB, run `pnpm gen-types`. This generates
-`packages/db/src/types.ts`, which should be checked in with the changes.
+`libs/db/src/types.ts`, which should be checked in with the changes.
 
 ### Generating a migration
 

@@ -1,0 +1,42 @@
+name = "worker"
+main = "src/index.ts"
+compatibility_date = "2023-07-10"
+
+# Optional: Configure batching and retries: https://developers.cloudflare.com/queues/learning/batching-retries/
+# max_batch_size = 10
+# max_batch_timeout = 30
+# max_retries = 10
+# dead_letter_queue = "my-queue-dlq"
+
+[env.production]
+  vars = { ENV = "production" }
+
+[[env.production.queues.producers]]
+  queue = "queue-production"
+  binding = "QUEUE"
+
+[[env.production.queues.consumers]]
+  queue = "queue-production"
+
+[env.staging]
+  vars = { ENV = "staging" }
+
+[[env.staging.queues.producers]]
+  queue = "queue-staging"
+  binding = "QUEUE"
+
+[[env.staging.queues.consumers]]
+  queue = "queue-staging"
+
+[env.development]
+  vars = { ENV = "development" }
+
+[[env.development.queues.producers]]
+  queue = "queue-development"
+  binding = "QUEUE"
+
+[[env.development.queues.consumers]]
+  queue = "queue-development"
+
+[placement]
+  mode = "smart"
