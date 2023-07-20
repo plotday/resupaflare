@@ -38,7 +38,10 @@ export const SentryServerInit = (dsn: string, request?: Request) => {
   });
 };
 
-export const SentryClientInit = (dsn: string) => {
+export const SentryClientInit = (
+  dsn: string,
+  user?: { id?: string; email?: string } | null
+) => {
   if (Sentry) return;
   Sentry = ClientSentry;
   // https://docs.sentry.io/platforms/javascript/guides/remix/
@@ -69,6 +72,9 @@ export const SentryClientInit = (dsn: string) => {
     replaysSessionSampleRate: 0.1,
     replaysOnErrorSampleRate: 1.0,
   });
+  if (user?.id || user?.email) {
+    ClientSentry.setUser({ id: user?.id, email: user?.email });
+  }
 };
 
 export const captureRemixErrorBoundaryError = (error: any) => {
