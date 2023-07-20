@@ -92,7 +92,14 @@ Create two projects, one for production and the other for staging.
 
 ### GitHub Actions
 
-1. Add `SUPABASE_PROJECT_ID` as a GitHub Actions environment variable
-1. [Generate a Supabase access token](https://supabase.com/dashboard/account/tokens)
-1. Add `SUPABASE_ACCESS_TOKEN` as a GitHub Actions repo secret
-1. Add `SUPABASE_DB_PASSWORD` as a GitHub Actions environment secret
+1.[Generate a Supabase access token](https://supabase.com/dashboard/account/tokens)
+2. Add these organization or repo secrets:
+   1. `SUPABASE_ACCESS_TOKEN`
+   2. `CLOUDFLARE_API_TOKEN`
+   3. `SENTRY_AUTH_TOKEN`
+4. Create `staging` and `production` environments
+5. Add environment secrets
+   1. `SUPABASE_DB_PASSWORD`
+6. Add environment variables
+   1. `DEPLOY_ENV`
+   2. `SUPABASE_PROJECT_ID`
