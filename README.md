@@ -29,6 +29,7 @@ rm -rf resupaflare
 # Clone the new repo
 git clone https://github.com/USERNAME/NEW_REPO.git
 cd NEW_REPO
+git remote add resupaflare https://github.com/PlotTech/resupaflare.git
 git grep -l '@resupaflare' | xargs sed -i '' -e 's/@resupaflare/@NEW_SCOPE/g'
 git commit -am "Set package scope"
 git push origin master
@@ -36,13 +37,11 @@ git push origin master
 
 ## Updating
 
-To pull the latest changes from this repo:
+To pull the latest changes from this repo into your new repo:
 
 ```bash
-cd YOUR_REPO
-git remote add public https://github.com/PlotTech/resupaflare.git
-git pull public master
-git push origin master
+git pull resupaflare main
+git push origin main
 ```
 
 ## Local setup
