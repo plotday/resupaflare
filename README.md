@@ -92,14 +92,13 @@ Create two projects, one for production and the other for staging.
 
 ### GitHub Actions
 
-1.[Generate a Supabase access token](https://supabase.com/dashboard/account/tokens)
-2. Add these organization or repo secrets:
-   1. `SUPABASE_ACCESS_TOKEN`
-   2. `CLOUDFLARE_API_TOKEN`
-   3. `SENTRY_AUTH_TOKEN`
-4. Create `staging` and `production` environments
-5. Add environment secrets
+1. Add these organization or repo secrets
+   1. `SUPABASE_ACCESS_TOKEN` ([generate](https://supabase.com/dashboard/account/tokens))
+   2. `CLOUDFLARE_API_TOKEN` ([generate](https://dash.cloudflare.com/profile/api-tokens))
+   3. `SENTRY_AUTH_TOKEN` ([generate](https://useplot.sentry.io/settings/account/api/auth-tokens/))
+1. Create `staging` and `production` environments
+1. Add environment secrets
    1. `SUPABASE_DB_PASSWORD`
-6. Add environment variables
+1. Add environment variables
    1. `DEPLOY_ENV`
    2. `SUPABASE_PROJECT_ID`
