@@ -20,7 +20,7 @@ You'll likely want to duplicate this repo, rather than forking it:
 # First, create a blank NEW_REPO on GitHub.
 
 # Make a bare clone
-git clone --bare https://github.com/PlotTech/resupaflare.git
+git clone --bare https://github.com/plotday/resupaflare.git
 cd resupaflare.git
 git push --mirror https://github.com/USERNAME/NEW_REPO.git
 cd ..
@@ -29,7 +29,7 @@ rm -rf resupaflare
 # Clone the new repo
 git clone https://github.com/USERNAME/NEW_REPO.git
 cd NEW_REPO
-git remote add resupaflare https://github.com/PlotTech/resupaflare.git
+git remote add resupaflare https://github.com/plotday/resupaflare.git
 git grep -l '@resupaflare' | xargs sed -i '' -e 's/@resupaflare/@NEW_SCOPE/g'
 git commit -am "Set package scope"
 git push origin master
