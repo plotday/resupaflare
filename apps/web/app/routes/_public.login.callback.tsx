@@ -3,20 +3,14 @@ import { redirect } from "@remix-run/cloudflare";
 
 import { completeSignIn } from "../auth";
 import { DEFAULT_PATH } from "../config";
-import { createServerClient, getSupabaseServiceEnv } from "../db";
+import { createServerAdminClient } from "../db";
 
 export const loader = async ({ context, request }: LoaderArgs) => {
-  let response: Response | undefined;
   try {
-    let supabaseAdmin;
-    ({ response, supabase: supabaseAdmin } = createServerClient(
-      getSupabaseServiceEnv(context),
-      request
-    ));
+    const supabaseAdmin = createServerAdminClient(context);
     await completeSignIn(request, supabaseAdmin);
     return redirect(DEFAULT_PATH, {
       status: 303,
-      headers: response.headers,
     });
   } catch (error) {
     console.error(error);
@@ -27,7 +21,6 @@ export const loader = async ({ context, request }: LoaderArgs) => {
     );
     return redirect(`/login?${params.toString()}`, {
       status: 303,
-      headers: response?.headers ?? {},
     });
   }
 };
