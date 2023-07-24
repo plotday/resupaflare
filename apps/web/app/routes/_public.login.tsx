@@ -10,11 +10,11 @@ import {
 
 import { signInWithAzure, signInWithGoogle } from "../auth";
 import { DEFAULT_PATH } from "../config";
-import { createServerClient, getSupabaseEnv } from "../db";
+import { createServerClient } from "../db";
 import type { SupabaseOutletContext } from "../root";
 
 export const loader = async ({ context, request }: LoaderArgs) => {
-  const { supabase } = createServerClient(getSupabaseEnv(context), request);
+  const { supabase } = createServerClient(request, context);
   const {
     data: { user },
   } = await supabase.auth.getUser();
