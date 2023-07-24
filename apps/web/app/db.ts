@@ -1,6 +1,7 @@
 import type { AppLoadContext } from "@remix-run/cloudflare";
 import type { Database } from "@resupaflare/db";
-import { createServerClient as createSupabaseClient } from "@supabase/auth-helpers-remix";
+import { createServerClient as createServerClientHelper } from "@supabase/auth-helpers-remix";
+import { createClient } from "@supabase/supabase-js";
 
 import { getEnv } from "./env";
 
@@ -18,24 +19,14 @@ export const cookieOptions = {
   path: "/",
 };
 
-export const getSupabaseEnv = (context: AppLoadContext) => ({
-  url: getEnv(context).SUPABASE_URL,
-  key: getEnv(context).SUPABASE_ANON_KEY,
-});
-
-export const getSupabaseServiceEnv = (context: AppLoadContext) => ({
-  url: getEnv(context).SUPABASE_URL,
-  key: getEnv(context).SUPABASE_SERVICE_KEY,
-});
-
 export const createServerClient = (
-  supabaseConfig: { url: string; key: string },
-  request: Request
+  request: Request,
+  context: AppLoadContext
 ) => {
   const response = new Response();
-  const supabase = createSupabaseClient<Database>(
-    supabaseConfig.url,
-    supabaseConfig.key,
+  const supabase = createServerClientHelper<Database>(
+    getEnv(context).SUPABASE_URL,
+    getEnv(context).SUPABASE_ANON_KEY,
     {
       request,
       response,
@@ -43,4 +34,12 @@ export const createServerClient = (
     }
   );
   return { response, supabase };
+};
+
+export const createServerAdminClient = (context: AppLoadContext) => {
+  const supabaseAdmin = createClient<Database>(
+    getEnv(context).SUPABASE_URL,
+    getEnv(context).SUPABASE_SERVICE_KEY
+  );
+  return supabaseAdmin;
 };

@@ -32,7 +32,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { useEffect, useMemo } from "react";
 
 import { APP_NAME } from "./config";
-import { cookieOptions, createServerClient, getSupabaseEnv } from "./db";
+import { cookieOptions, createServerClient } from "./db";
 import { getBrowserEnv, getEnv } from "./env";
 import {
   Sentry,
@@ -45,10 +45,7 @@ export const loader = async ({ context, request }: LoaderArgs) => {
   const env = getEnv(context);
   if (env.SENTRY_DSN) SentryServerInit(env.SENTRY_DSN, request);
 
-  const { response, supabase } = createServerClient(
-    getSupabaseEnv(context),
-    request
-  );
+  const { response, supabase } = createServerClient(request, context);
 
   const {
     data: { session },
