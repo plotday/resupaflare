@@ -23,6 +23,10 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
+# local dev secrets (never commit — these hold real tokens)
+.dev.vars
+**/.dev.vars
+
 # turbo
 .turbo
 
